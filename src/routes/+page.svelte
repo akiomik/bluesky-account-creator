@@ -4,8 +4,10 @@
 	let email: string;
 	let inviteCode: string;
 
+	$: isValid = email && password && handle && inviteCode && inviteCode.match(/bsky.social-\w+/);
+
 	const onClick = async () => {
-		if (!email || !password || !handle || !inviteCode) {
+		if (!isValid) {
 			return;
 		}
 
@@ -65,16 +67,14 @@
 				class="input"
 				type="text"
 				placeholder="bsky.social-XXXXX"
+				pattern="bsky\.social-\w+"
 				bind:value={inviteCode}
 				required
 			/>
 		</label>
 	</div>
 
-	<button
-		class="btn bg-primary-600"
-		type="submit"
-		on:click={onClick}
-		disabled={!email || !password || !handle || !inviteCode}>Try</button
+	<button class="btn bg-primary-600" type="submit" on:click={onClick} disabled={!isValid}
+		>Try</button
 	>
 </form>
