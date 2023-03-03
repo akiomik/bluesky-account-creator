@@ -5,6 +5,10 @@
 	let inviteCode: string;
 
 	const onClick = async () => {
+		if (!email || !password || !handle || !inviteCode) {
+			return;
+		}
+
 		try {
 			const res = await fetch('https://bsky.social/xrpc/com.atproto.account.create', {
 				method: 'POST',
@@ -34,7 +38,7 @@
 <h1>Bluesky Account Creator</h1>
 <span>for android user</span>
 
-<div class="mt-8 flex-col space-y-8">
+<form class="mt-8 flex-col space-y-8">
 	<div class="space-y-4">
 		<label class="label">
 			email
@@ -67,5 +71,10 @@
 		</label>
 	</div>
 
-	<button class="btn variant-filled-primary" type="submit" on:click={onClick}>Try</button>
-</div>
+	<button
+		class="btn bg-primary-600"
+		type="submit"
+		on:click={onClick}
+		disabled={!email || !password || !handle || !inviteCode}>Try</button
+	>
+</form>
