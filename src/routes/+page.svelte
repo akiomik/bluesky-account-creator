@@ -12,7 +12,7 @@
 		}
 
 		try {
-			const res = await fetch('https://bsky.social/xrpc/com.atproto.account.create', {
+			const res = await fetch('https://bsky.social/xrpc/com.atproto.server.createAccount', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -29,7 +29,7 @@
 			if (res.status >= 400) {
 				alert(`${json.error}: ${json.message}`);
 			} else {
-				alert('success!');
+				alert('Success!');
 			}
 		} catch (e) {
 			alert(e);
