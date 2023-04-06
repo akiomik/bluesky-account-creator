@@ -67,7 +67,7 @@
 				class="input"
 				type="text"
 				placeholder="bsky.social-XXXXX"
-				pattern="bsky\.social-\w+"
+				pattern="bsky.social-\w+"
 				bind:value={inviteCode}
 				required
 			/>
